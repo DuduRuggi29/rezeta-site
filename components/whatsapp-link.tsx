@@ -58,7 +58,20 @@ export function trackWhatsapp(placement: string) {
 export function openWhatsapp(message: string, placement: string) {
   const href = whatsappHref(message + attributionTag(readAttribution()));
   trackWhatsapp(placement);
-  window.open(href, "_blank", "noopener");
+  const w = window.open(href, "_blank", "noopener");
+  if (!w) window.location.href = href;
+}
+
+export const FORM_ID = "formulario";
+
+/** Rola até o formulário e coloca o cursor no primeiro campo vazio. */
+export function goToForm() {
+  const form = document.getElementById(FORM_ID);
+  if (!form) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  form.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+  const empty = [...form.querySelectorAll<HTMLInputElement | HTMLSelectElement>("input, select")].find((f) => !f.value.trim());
+  window.setTimeout(() => empty?.focus({ preventScroll: true }), reduced ? 0 : 650);
 }
 
 export function WhatsappIcon({ className }: { className?: string }) {
@@ -77,10 +90,10 @@ interface WhatsappLinkProps extends Omit<React.ComponentProps<"a">, "href"> {
   icon?: boolean;
 }
 
-/** CTA principal: link real para o wa.me (funciona sem JS e é rastreável). */
+/** CTA da página: rola até o formulário (o WhatsApp só abre depois que ele é preenchido). */
 export function WhatsappLink({
   placement,
-  message = site.whatsappMessage,
+  message: _message,
   variant = "primary",
   size = "md",
   icon = true,
@@ -88,26 +101,19 @@ export function WhatsappLink({
   children,
   ...rest
 }: WhatsappLinkProps) {
-  const [href, setHref] = React.useState(() => whatsappHref(message));
-  React.useEffect(() => {
-    setHref(whatsappHref(message + attributionTag(readAttribution())));
-  }, [message]);
-
   return (
     <a
       {...rest}
-      // id "vendedor": gatilho de conversão do Google Ads no GTM (clique que corresponde ao seletor CSS #vendedor)
-      id="vendedor"
-      href={href}
-      target="_blank"
-      rel="noopener"
+      href={`#${FORM_ID}`}
       data-cta={placement}
       onClick={(e) => {
-        trackWhatsapp(placement);
+        e.preventDefault();
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "cta_click", cta_placement: placement });
+        goToForm();
         rest.onClick?.(e);
       }}
       className={cn(
-        // filhos sem clique: o elemento clicado é sempre o próprio <a id="vendedor">
         "[&_*]:pointer-events-none group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-xl font-bold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
         size === "lg" ? "h-16 pl-7 pr-2.5 text-lg" : "h-11 pl-5 pr-1.5 text-[15px]",
         variant === "primary" && "btn-yellow hover:-translate-y-0.5",

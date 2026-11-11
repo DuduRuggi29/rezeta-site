@@ -1,5 +1,5 @@
 import { WhatsappLink } from "@/components/whatsapp-link";
-import { Carousel, Faq, HeroVideo, MethodPath, PageEffects, PhotoStack, PlanPicker, StickyCta, Testimonials } from "@/components/rezeta/client";
+import { Carousel, Faq, HeroForm, HeroVideo, MethodPath, PageEffects, PhotoStack, PlanPicker, StickyCta, Testimonials } from "@/components/rezeta/client";
 import { faq, serviceTabs, testimonials } from "@/lib/content";
 import { LOGO_PATH, LOGO_VIEWBOX } from "@/lib/logo-path";
 import { site } from "@/lib/site";
@@ -120,38 +120,6 @@ const HEADLINE: [string, boolean][] = [
   ["vender", true], ["e", true], ["lucrar", true], ["mais", true],
 ];
 
-const CHAT = [
-  { me: false, text: "Olá! Vi o anúncio de vocês e quero agendar." },
-  { me: true, text: "Claro! Tenho horário amanhã às 10h. Posso confirmar?" },
-  { me: false, text: "Pode sim, fechado! 🙌" },
-];
-
-/** Cartão do topo: sem formulário, só o botão que leva direto para o WhatsApp. */
-function HeroCard() {
-  return (
-    <div className="rounded-2xl bg-black p-5 shadow-[0_40px_80px_-30px_rgba(0,0,0,.65)] sm:p-7">
-      <p className="m-0 text-center text-lg font-bold text-white">
-        É isso que chega no seu <span className="hl">WhatsApp</span>
-      </p>
-      <ul className="m-0 mt-5 grid list-none gap-2.5 p-0">
-        {CHAT.map((c, i) => (
-          <li
-            key={i}
-            className={`max-w-[85%] animate-[fade-up_.6s_ease-out_both] rounded-2xl px-4 py-2.5 text-[15px] leading-snug ${c.me ? "ml-auto rounded-br-sm bg-yellow font-semibold text-black" : "rounded-bl-sm bg-field text-white"}`}
-            style={{ animationDelay: `${0.5 + i * 0.6}s` }}
-          >
-            {c.text}
-          </li>
-        ))}
-      </ul>
-      <WhatsappLink placement="hero_card" size="lg" className="mt-6 w-full animate-pulse-ring justify-between pl-5 text-base sm:pl-7 sm:text-lg">
-        Falar no WhatsApp agora
-      </WhatsappLink>
-      <p className="m-0 mt-3 text-center text-xs text-white/60">Atendimento rápido, direto com um especialista.</p>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <>
@@ -192,7 +160,7 @@ export default function Home() {
                 <WhatsappLink placement="hero" variant="black" size="lg" icon={false}>Quero vender mais</WhatsappLink>
               </div>
             </div>
-            <HeroCard />
+            <HeroForm />
           </div>
         </section>
 

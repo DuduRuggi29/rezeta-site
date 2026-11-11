@@ -73,20 +73,30 @@ export function Rotator({ words, className = "" }: { words: string[]; className?
   );
 }
 
-/* ───────── Formulário do topo: qualifica e abre o WhatsApp ───────── */
-const SEGMENTS = ["Restaurante", "Escritório de advocacia", "Clínica médica", "Clínica de estética", "Outro negócio local"];
+/* ───────── Formulário do topo: o WhatsApp só abre com tudo preenchido ───────── */
+const SEGMENTS = ["Restaurante / alimentação", "Saúde / clínica", "Estética / beleza", "Advocacia / serviços", "Loja / comércio", "Outro negócio"];
 const REVENUE = ["Até R$ 30 mil", "R$ 30 mil a R$ 100 mil", "R$ 100 mil a R$ 300 mil", "R$ 300 mil a R$ 1 milhão", "Acima de R$ 1 milhão"];
 const field =
   "h-14 w-full rounded-lg bg-field px-4 text-base text-white placeholder:text-white/55 outline-none ring-yellow transition focus:ring-2";
 
 export function HeroForm() {
   const card = React.useRef<HTMLDivElement>(null);
+  const [complete, setComplete] = React.useState(false);
   const [sent, setSent] = React.useState(false);
+
+  const check = (form: HTMLFormElement) => {
+    const d = new FormData(form);
+    setComplete(["nome", "empresa", "segmento", "faturamento"].every((k) => String(d.get(k) ?? "").trim().length >= 2));
+  };
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const d = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    check(form);
+    if (!form.reportValidity()) return;
+    const d = new FormData(form);
     const get = (k: string) => String(d.get(k) ?? "").trim();
+    if (["nome", "empresa", "segmento", "faturamento"].some((k) => get(k).length < 2)) return;
     openWhatsapp(
       [
         "Olá, equipe REZETA! Quero vender e lucrar mais com o meu negócio.",
@@ -104,13 +114,13 @@ export function HeroForm() {
   return (
     <div
       ref={card}
-      className="rounded-2xl bg-black p-4 shadow-[0_40px_80px_-30px_rgba(0,0,0,.65)] transition-transform duration-200 ease-out sm:p-5"
+      className="scroll-mt-6 rounded-2xl bg-black p-4 shadow-[0_40px_80px_-30px_rgba(0,0,0,.65)] transition-transform duration-200 ease-out sm:p-5"
       onPointerMove={(e) => {
         if (e.pointerType !== "mouse" || !card.current) return;
         const r = card.current.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
-        card.current.style.transform = `perspective(1100px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg)`;
+        card.current.style.transform = `perspective(1100px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
       }}
       onPointerLeave={() => {
         if (card.current) card.current.style.transform = "";
@@ -119,9 +129,9 @@ export function HeroForm() {
       <p className="mb-4 text-center text-lg font-bold text-white">
         Fale com um especialista <span className="hl">agora</span>
       </p>
-      <form onSubmit={onSubmit} className="grid gap-3">
-        <input aria-label="Seu nome" name="nome" required autoComplete="name" placeholder="Seu nome" className={field} />
-        <input aria-label="Nome da empresa" name="empresa" required autoComplete="organization" placeholder="Nome da empresa" className={field} />
+      <form id="formulario" onSubmit={onSubmit} onInput={(e) => check(e.currentTarget)} onChange={(e) => check(e.currentTarget)} className="grid gap-3">
+        <input aria-label="Seu nome" name="nome" required minLength={2} autoComplete="name" placeholder="Seu nome" className={field} />
+        <input aria-label="Nome da empresa" name="empresa" required minLength={2} autoComplete="organization" placeholder="Nome da empresa" className={field} />
         <label className="grid gap-1.5 text-sm text-white">
           Segmento
           <select name="segmento" required defaultValue="" className={field}>
@@ -136,12 +146,23 @@ export function HeroForm() {
             {REVENUE.map((s) => <option key={s}>{s}</option>)}
           </select>
         </label>
-        <button type="submit" className="btn-yellow mt-1 h-16 w-full animate-pulse-ring rounded-lg px-3 text-base font-extrabold transition hover:brightness-105 sm:text-lg">
-          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 w-1/4 animate-shine bg-white/60" />
+        {/* id "vendedor": conversão do Google Ads. O botão fica desativado até tudo ser preenchido,
+            então o clique (e a conversão) só acontece com o formulário completo. */}
+        <button
+          id="vendedor"
+          type="submit"
+          disabled={!complete}
+          className={`btn-yellow mt-1 h-16 w-full rounded-lg px-3 text-base font-extrabold transition sm:text-lg [&_*]:pointer-events-none ${complete ? "animate-pulse-ring hover:brightness-105" : "cursor-not-allowed opacity-45 shadow-none"}`}
+        >
+          {complete && <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1/4 animate-shine bg-white/60" />}
           <span className="relative">Quero vender e lucrar mais</span>
         </button>
         <p className="m-0 text-center text-xs text-white/60" aria-live="polite">
-          {sent ? "Abrimos o WhatsApp com seus dados. É só tocar em enviar." : "Você continua a conversa no nosso WhatsApp."}
+          {sent
+            ? "Abrimos o WhatsApp com seus dados. É só tocar em enviar."
+            : complete
+              ? "Tudo certo! Toque no botão para falar no WhatsApp."
+              : "Preencha todos os campos para liberar o WhatsApp."}
         </p>
       </form>
     </div>
