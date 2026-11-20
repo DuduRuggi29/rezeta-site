@@ -1,80 +1,38 @@
 import type { GlobeTestimonial } from "@/components/ui/testimonial-globe";
 
-/**
- * ⚠️ DEPOIMENTOS DE EXEMPLO — substitua por depoimentos REAIS (com autorização do cliente)
- * antes de publicar. Depoimentos inventados violam o CDC e as políticas do Google Ads.
- */
+/** Depoimentos de clientes da REZETA (enviados pelo dono da agência). */
 export const testimonials: GlobeTestimonial[] = [
-  { id: "rest", quote: "As reservas pelo WhatsApp passaram a chegar todos os dias. Hoje sei quanto custa cada mesa que vem do anúncio.", name: "Cliente Exemplo 1", role: "Proprietário", company: "Restaurante", city: "São Paulo, SP", lat: -23.55, lng: -46.63, image: "/avatars/1.svg", rating: 5 },
-  { id: "adv", quote: "Paramos de receber curioso. Os contatos que chegam já sabem o que fazemos e querem marcar a consulta.", name: "Cliente Exemplo 2", role: "Sócio", company: "Escritório de Advocacia", city: "Campinas, SP", lat: -22.9, lng: -47.06, image: "/avatars/2.svg", rating: 5 },
-  { id: "med", quote: "A agenda da clínica deixou de depender de indicação. O WhatsApp virou o nosso principal canal de agendamento.", name: "Cliente Exemplo 3", role: "Diretora", company: "Clínica Médica", city: "Belo Horizonte, MG", lat: -19.92, lng: -43.94, image: "/avatars/3.svg", rating: 5 },
-  { id: "est", quote: "Anúncio certo, página bonita e resposta rápida. As avaliações viraram procedimento fechado.", name: "Cliente Exemplo 4", role: "Proprietária", company: "Clínica de Estética", city: "Curitiba, PR", lat: -25.43, lng: -49.27, image: "/avatars/4.svg", rating: 5 },
-  { id: "rest2", quote: "Aparecemos no Google para quem procura hambúrguer artesanal. O delivery e o salão sentiram a diferença.", name: "Cliente Exemplo 5", role: "Sócio", company: "Hamburgueria", city: "Rio de Janeiro, RJ", lat: -22.91, lng: -43.17, image: "/avatars/5.svg", rating: 5 },
-  { id: "est2", quote: "Antes eu impulsionava post. Agora tenho campanha, página e roteiro de atendimento, e sei o que dá lucro.", name: "Cliente Exemplo 6", role: "Proprietária", company: "Estúdio de Estética", city: "Goiânia, GO", lat: -16.68, lng: -49.25, image: "/avatars/6.svg", rating: 5 },
-];
-
-/** Os quatro tipos de negócio local em que a REZETA é especialista. */
-export const niches = [
-  {
-    id: "restaurantes",
-    name: "Restaurantes",
-    short: "Restaurantes e delivery",
-    goal: "Mesas cheias, reservas e pedidos todos os dias",
-    text: "Anúncios para quem procura onde comer, Perfil da Empresa no Google forte, cardápio que dá vontade de pedir e WhatsApp pronto para reserva e delivery.",
-    points: ["Anúncios para quem quer pedir", "Google Maps e avaliações", "Reservas e pedidos no WhatsApp", "Promoções para dias fracos"],
-  },
-  {
-    id: "advocacia",
-    name: "Advocacia",
-    short: "Escritórios de advocacia",
-    goal: "Consultas com quem realmente precisa de um advogado",
-    text: "Campanhas na pesquisa do Google para quem já busca a sua área, páginas informativas e um primeiro atendimento no WhatsApp que filtra o caso antes da consulta.",
-    points: ["Pesquisa por área de atuação", "Comunicação dentro das regras da OAB", "Triagem do caso no WhatsApp", "Agenda de consultas qualificadas"],
-  },
-  {
-    id: "clinica-medica",
-    name: "Clínica médica",
-    short: "Clínicas e consultórios",
-    goal: "Agenda cheia sem depender de indicação",
-    text: "Anúncios por especialidade, página clara sobre atendimento e convênios e um fluxo de agendamento pelo WhatsApp que reduz faltas.",
-    points: ["Anúncios por especialidade", "Comunicação dentro das regras do CFM", "Agendamento pelo WhatsApp", "Lembretes que reduzem faltas"],
-  },
-  {
-    id: "estetica",
-    name: "Clínica de estética",
-    short: "Clínicas de estética",
-    goal: "Avaliações que viram procedimentos fechados",
-    text: "Campanhas no Instagram e no Google para quem busca o seu procedimento, ofertas de avaliação e um roteiro de atendimento que converte.",
-    points: ["Instagram e Google Ads", "Oferta de avaliação que atrai", "Roteiro de venda do procedimento", "Retorno e recompra de clientes"],
-  },
+  { id: "delivery", quote: "Saí de 35 pedidos por dia no delivery para mais de 80. Colocaram uma IA para responder, melhor que o meu antigo vendedor. Faturo mais, com mais margem, e reduzi funcionário.", name: "Delivery", company: "Cliente REZETA", city: "", lat: 0, lng: 0, image: "", rating: 5 },
+  { id: "provedor", quote: "Meus resultados foram para um ROI de 3,6 e uma ótima recorrência. Recomendo muito vocês!", name: "Provedor de internet", company: "Cliente REZETA", city: "", lat: 0, lng: 0, image: "", rating: 5 },
 ];
 
 /** Frentes de serviço (carrossel "O que fazemos"). */
 export const serviceTabs = [
-  { id: "trafego", tab: "Tráfego Pago", a: "Tráfego", b: "Pago", bubbles: ["Google Ads", "Meta Ads", "Instagram", "YouTube", "Pesquisa", "Maps"],
-    lead: "Anúncio para quem está pronto para comprar.",
-    text: "Campanhas no Google e no Meta segmentadas pela intenção de compra. A internet leva o seu negócio a muito mais gente do que a indicação, e o seu anúncio aparece para quem pode virar cliente de verdade, não para curioso." },
-  { id: "maps", tab: "Google Maps", a: "Google Maps e", b: "Perfil da Empresa", bubbles: ["Perfil da Empresa", "Avaliações", "Fotos", "Horários", "Rotas", "Ligações"],
-    lead: "Seja encontrado por quem já procura o que você vende.",
-    text: "Otimizamos o seu Perfil da Empresa no Google com fotos, categorias, horários e uma rotina para conquistar avaliações, para você aparecer melhor no Maps e na busca do Google." },
-  { id: "lp", tab: "Páginas & Copy", a: "Páginas que", b: "Vendem", bubbles: ["Copy", "Oferta", "Mobile", "SEO", "Velocidade", "Prova social"],
-    lead: "A página certa filtra o curioso e convence o cliente.",
-    text: "Landing pages rápidas e persuasivas, feitas para o celular, com a oferta clara e o botão do WhatsApp sempre à mão." },
-  { id: "whatsapp", tab: "Vendas no WhatsApp", a: "Vendas no", b: "WhatsApp", bubbles: ["Roteiro", "Agendamento", "Follow-up", "CRM", "Resposta rápida", "Lembretes"],
-    lead: "É no WhatsApp que o contato vira cliente. Ou vira prejuízo.",
-    text: "Mensagem de entrada, roteiro de atendimento, agendamento, lembretes e follow-up para a sua equipe responder rápido e fechar mais." },
-  { id: "dados", tab: "Dados & Margem", a: "Dados e", b: "Margem", bubbles: ["GA4", "Tag Manager", "Pixel", "Conversões", "Painel", "Custo por cliente"],
-    lead: "Você sabe quanto custa cada cliente e quanto sobra.",
-    text: "Rastreamos do anúncio até a conversa no WhatsApp. Você acompanha custo por cliente, ticket e retorno em um painel simples." },
+  { id: "trafego", tab: "Tráfego Pago para Delivery", a: "Tráfego Pago", b: "Validado", bubbles: ["Google Ads", "Meta Ads", "Instagram", "Área de entrega", "Peça agora", "Dias fracos"],
+    lead: "O mesmo método que usamos no nosso próprio delivery.",
+    text: "Anúncios no Google e no Meta para quem está com fome e pronto para pedir, dentro da sua área de entrega. Nada de teste com o seu dinheiro: o método já foi validado com o nosso." },
+  { id: "cardapio", tab: "Cardápio que Vende", a: "Cardápio que", b: "Vende Mais", bubbles: ["Adicionais", "Combos", "Bebidas", "Sobremesas", "Ticket médio", "Pedido no WhatsApp"],
+    lead: "Cada pedido sai maior, sem gastar mais com anúncio.",
+    text: "Cardápio digital personalizado que oferece adicionais, bebidas e sobremesas ao longo do pedido. O cliente compra mais e o seu ticket médio sobe." },
+  { id: "ia", tab: "Atendimento com IA", a: "Atendimento", b: "com IA", bubbles: ["Resposta na hora", "24 horas", "Sem fila", "Pedido anotado", "Fim de semana", "Sem pedido perdido"],
+    lead: "Todo cliente atendido de imediato. Nenhum pedido perdido.",
+    text: "A inteligência artificial responde no WhatsApp na hora, envia o cardápio, tira dúvidas e anota o pedido, inclusive no pico de sexta à noite. Sua equipe acompanha tudo e assume quando quiser." },
+  { id: "dados", tab: "Dados e Recompra", a: "Os Dados", b: "São Seus", bubbles: ["Base de clientes", "Histórico", "Cupom de volta", "Aniversário", "Dias fracos", "Recompra"],
+    lead: "Cliente que compra uma vez e volta sempre.",
+    text: "Nome, telefone e histórico de cada cliente ficam com você, não com o aplicativo. Com isso, você chama o cliente de volta com a oferta certa e enche a cozinha de segunda a quinta." },
+  { id: "margem", tab: "Margem no Bolso", a: "Mais Dinheiro", b: "no Bolso", bubbles: ["Sem comissão", "Custo por pedido", "Ticket médio", "Lucro", "Painel", "Relatório"],
+    lead: "Menos taxa, mais lucro no fim do mês.",
+    text: "Cada pedido que chega pelo seu canal próprio não paga comissão de aplicativo. Você acompanha custo por pedido, ticket médio e lucro em um painel simples." },
 ];
 
 export const faq = [
-  { q: "Para quais negócios a REZETA trabalha?", a: "Somos uma agência de marketing e assessoria para negócios locais que querem vender pelo WhatsApp de forma rápida. Se o seu negócio vende pelo WhatsApp ou presencialmente, provavelmente podemos ajudar." },
-  { q: "Qual é o resultado que a REZETA entrega?", a: "O nosso resultado é você vender mais. Não medimos sucesso por curtidas ou volume de contatos, e sim por clientes atendidos, custo por cliente e margem. Unimos anúncios no Google e no Meta, Google Maps, página e atendimento no WhatsApp em um só sistema de captação e conversão." },
-  { q: "Como funciona o marketing para negócios locais?", a: "Os anúncios aparecem para pessoas que já procuram o que você oferece, muito além de quem passa na frente do seu negócio: esse é o poder da internet. Junto disso, fortalecemos o seu Perfil da Empresa no Google e levamos esse cliente direto para o seu WhatsApp." },
-  { q: "Vocês fazem anúncios para advogados e médicos dentro das regras?", a: "Sim. A publicidade de advogados segue as regras da OAB e a de médicos segue as do CFM. Criamos campanhas e textos informativos, sem promessa de resultado, respeitando essas normas." },
-  { q: "Por que eu recebo contatos caros e desqualificados hoje?", a: "Normalmente porque a campanha alcança gente sem intenção de compra, e a página não filtra curiosos. Corrigimos a segmentação, a oferta e a página para que o contato chegue pronto para agendar ou comprar." },
-  { q: "Em quanto tempo eu começo a vender mais?", a: "As campanhas podem gerar contatos nos primeiros dias. O período de otimização costuma levar de 30 a 90 dias, quando os dados mostram o que traz cliente com margem e o que só gasta verba." },
-  { q: "Quanto custa a assessoria de marketing da REZETA?", a: "Depende dos canais e do tamanho da operação. Começamos com uma conversa gratuita pelo WhatsApp e apresentamos uma proposta sob medida. A verba de anúncios é paga diretamente ao Google e ao Meta, separada da gestão." },
-  { q: "A REZETA atende negócios de qualquer cidade?", a: "Sim. O atendimento é online, e as campanhas levam o seu negócio a clientes muito além da vizinhança, onde quer que eles estejam." },
+  { q: "Para quem é o marketing da REZETA?", a: "A REZETA é uma agência de marketing especializada em delivery: hamburguerias, pizzarias, restaurantes, marmitarias, japonês, açaí e qualquer negócio que vende comida por entrega e quer mais pedidos, com menos custo e mais dinheiro no bolso no fim do mês." },
+  { q: "Eu preciso sair do iFood?", a: "Não. Você pode continuar no iFood. O que fazemos é construir o seu canal próprio de pedidos, para que cada vez mais vendas cheguem sem comissão de aplicativo e com os dados do cliente na sua mão." },
+  { q: "Como funciona o método da REZETA?", a: "É simples: tráfego pago com um método validado no nosso próprio delivery, cardápio personalizado que aumenta o ticket médio ao longo do pedido e atendimento com inteligência artificial que responde todo cliente na hora. E os dados dos clientes ficam com você, para fazer cada um comprar sempre." },
+  { q: "Como o cardápio personalizado aumenta o ticket médio?", a: "Durante o pedido, o cardápio oferece adicionais, bebidas, combos e sobremesas no momento certo. O cliente compra mais em cada pedido, e você fatura mais sem precisar gastar mais com anúncio." },
+  { q: "Como funciona o atendimento com inteligência artificial?", a: "A IA responde no WhatsApp na hora, a qualquer horário: envia o cardápio, tira dúvidas e anota o pedido. Ninguém fica esperando no pico e nenhum pedido se perde. Sua equipe acompanha as conversas e assume quando quiser." },
+  { q: "O que significa “os dados ficam com você”?", a: "No aplicativo, o cliente é do aplicativo: você não tem o contato dele para chamar de volta. No seu canal próprio, nome, telefone e histórico de pedidos ficam com você, e dá para criar ofertas para ele voltar a comprar, principalmente nos dias fracos." },
+  { q: "Meu delivery só vende bem no fim de semana. Vocês resolvem isso?", a: "Esse é um dos problemas que mais atacamos. Usamos anúncios e ofertas para a sua base de clientes nos dias e horários de pouco movimento, para a cozinha não ficar parada de segunda a quinta." },
+  { q: "Em quanto tempo começo a receber mais pedidos?", a: "As campanhas podem gerar pedidos nos primeiros dias. O período de otimização costuma levar de 30 a 90 dias, quando os dados mostram o que traz pedido com margem e o que só gasta verba." },
+  { q: "Quanto custa a assessoria da REZETA?", a: "Depende do tamanho da operação e dos canais. Começamos com uma conversa gratuita pelo WhatsApp e apresentamos uma proposta sob medida. A verba de anúncios é paga diretamente ao Google e ao Meta, separada da gestão." },
 ];

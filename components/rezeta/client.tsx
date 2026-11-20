@@ -74,7 +74,7 @@ export function Rotator({ words, className = "" }: { words: string[]; className?
 }
 
 /* ───────── Formulário do topo: o WhatsApp só abre com tudo preenchido ───────── */
-const SEGMENTS = ["Restaurante / alimentação", "Saúde / clínica", "Estética / beleza", "Advocacia / serviços", "Loja / comércio", "Outro negócio"];
+const SEGMENTS = ["Hamburgueria", "Pizzaria", "Restaurante / marmitaria", "Japonês / oriental", "Açaí / doces", "Outro delivery"];
 const REVENUE = ["Até R$ 30 mil", "R$ 30 mil a R$ 100 mil", "R$ 100 mil a R$ 300 mil", "R$ 300 mil a R$ 1 milhão", "Acima de R$ 1 milhão"];
 const field =
   "h-14 w-full rounded-lg bg-field px-4 text-base text-white placeholder:text-white/55 outline-none ring-yellow transition focus:ring-2";
@@ -99,11 +99,11 @@ export function HeroForm() {
     if (["nome", "empresa", "segmento", "faturamento"].some((k) => get(k).length < 2)) return;
     openWhatsapp(
       [
-        "Olá, equipe REZETA! Quero vender e lucrar mais com o meu negócio.",
+        "Olá, equipe REZETA! Quero mais pedidos no meu delivery.",
         "",
         `*Nome:* ${get("nome")}`,
-        `*Empresa:* ${get("empresa")}`,
-        `*Segmento:* ${get("segmento")}`,
+        `*Delivery:* ${get("empresa")}`,
+        `*Tipo:* ${get("segmento")}`,
         `*Faturamento mensal:* ${get("faturamento")}`,
       ].join("\n"),
       "form_hero",
@@ -127,13 +127,13 @@ export function HeroForm() {
       }}
     >
       <p className="mb-4 text-center text-lg font-bold text-white">
-        Fale com um especialista <span className="hl">agora</span>
+        Fale com um especialista em <span className="hl">delivery</span>
       </p>
       <form id="formulario" onSubmit={onSubmit} onInput={(e) => check(e.currentTarget)} onChange={(e) => check(e.currentTarget)} className="grid gap-3">
         <input aria-label="Seu nome" name="nome" required minLength={2} autoComplete="name" placeholder="Seu nome" className={field} />
-        <input aria-label="Nome da empresa" name="empresa" required minLength={2} autoComplete="organization" placeholder="Nome da empresa" className={field} />
+        <input aria-label="Nome do seu delivery" name="empresa" required minLength={2} autoComplete="organization" placeholder="Nome do seu delivery" className={field} />
         <label className="grid gap-1.5 text-sm text-white">
-          Segmento
+          Tipo de delivery
           <select name="segmento" required defaultValue="" className={field}>
             <option value="" disabled>Selecionar</option>
             {SEGMENTS.map((s) => <option key={s}>{s}</option>)}
@@ -244,7 +244,7 @@ export function Testimonials({ items }: { items: GlobeTestimonial[] }) {
           <blockquote className="m-0 mt-5 flex-1 text-lg font-semibold leading-snug">“{t.quote}”</blockquote>
           <figcaption className="mt-6 border-t border-black/10 pt-4">
             <span className="block font-bold">{t.name}</span>
-            <span className="block text-sm text-black/60">{t.company} · {t.city}</span>
+            <span className="block text-sm text-black/60">{[t.company, t.city].filter(Boolean).join(" · ")}</span>
           </figcaption>
         </figure>
       ))}
@@ -468,7 +468,7 @@ export function StickyCta() {
     <>
       <div className={`fixed inset-x-0 bottom-0 z-50 bg-black/90 p-3 backdrop-blur transition-transform duration-300 md:hidden ${show ? "translate-y-0" : "translate-y-full"}`} style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}>
         <WhatsappLink placement="sticky_mobile" size="lg" className="w-full justify-between" tabIndex={show ? 0 : -1}>
-          Quero vender mais
+          Quero mais pedidos
         </WhatsappLink>
       </div>
       <WhatsappLink
@@ -781,6 +781,54 @@ export function HeroVideo({ src, poster }: { src: string; poster?: string }) {
           </svg>
           {muted && <span>Ativar som</span>}
         </button>
+      </div>
+    </div>
+  );
+}
+
+/* ───────── Dores: o dono do delivery marca o que acontece com ele ───────── */
+export function PainPicker({ pains }: { pains: { title: string; question: string }[] }) {
+  const [on, setOn] = React.useState<number[]>([]);
+  const toggle = (i: number) => setOn((v) => (v.includes(i) ? v.filter((x) => x !== i) : [...v, i]));
+  const n = on.length;
+  return (
+    <div>
+      <ul className="m-0 grid list-none gap-3 p-0 md:grid-cols-2">
+        {pains.map((p, i) => {
+          const active = on.includes(i);
+          return (
+            <li key={p.title}>
+              <button
+                type="button"
+                aria-pressed={active}
+                onClick={() => toggle(i)}
+                className={`flex h-full w-full items-start gap-4 rounded-xl border-2 p-4 text-left transition duration-200 sm:p-5 ${active ? "border-yellow bg-yellow text-black" : "border-white/12 bg-panel text-white hover:-translate-y-0.5 hover:border-yellow/60"}`}
+              >
+                <span className={`mt-0.5 grid size-7 shrink-0 place-items-center rounded-md border-2 transition ${active ? "border-black bg-black text-yellow" : "border-white/30 text-transparent"}`}>
+                  <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m3 8.5 3 3 7-7" /></svg>
+                </span>
+                <span className="min-w-0">
+                  <span className={`block text-xs font-extrabold uppercase tracking-wider ${active ? "text-black/70" : "text-yellow"}`}>{p.title}</span>
+                  <span className="mt-1 block text-[16px] font-semibold leading-snug">{p.question}</span>
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="mt-8 flex flex-col items-center gap-4 text-center" aria-live="polite">
+        <p className="m-0 text-lg text-white/80">
+          {n === 0 ? (
+            "Toque nas frases que acontecem no seu delivery."
+          ) : (
+            <>
+              Você marcou <b className="hl">{n} de {pains.length}</b>. {n >= 3 ? "A REZETA resolve exatamente isso." : "Já dá para resolver."}
+            </>
+          )}
+        </p>
+        <WhatsappLink placement="dores" size="lg" icon={false} className={n > 0 ? "animate-pulse-ring" : ""}>
+          Quero resolver isso
+        </WhatsappLink>
       </div>
     </div>
   );

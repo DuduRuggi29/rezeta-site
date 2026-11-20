@@ -1,10 +1,10 @@
 import { WhatsappLink } from "@/components/whatsapp-link";
-import { Carousel, Faq, HeroForm, HeroVideo, MethodPath, PageEffects, PhotoStack, PlanPicker, StickyCta, Testimonials } from "@/components/rezeta/client";
+import { Carousel, Faq, HeroForm, HeroVideo, MethodPath, PageEffects, PainPicker, PhotoStack, PlanPicker, StickyCta, Testimonials } from "@/components/rezeta/client";
 import { faq, serviceTabs, testimonials } from "@/lib/content";
 import { LOGO_PATH, LOGO_VIEWBOX } from "@/lib/logo-path";
 import { site } from "@/lib/site";
 
-const RIBBON = ["Leads qualificados", "Vendas no WhatsApp", "Captação e conversão", "O nosso resultado é você vender mais", "Chega de faturamento sem margem"];
+const RIBBON = ["Mais pedidos de segunda a domingo", "Menos taxa de aplicativo", "Ticket médio maior", "Atendimento com IA", "Os dados dos clientes são seus", "Mais dinheiro no bolso no fim do mês"];
 
 const PHOTOS = [
   { src: "/sobre/equipe-google.jpg", width: 778, height: 926, caption: "Nossa equipe na sede do Google", alt: "Equipe da REZETA com crachás de convidados na sede do Google" },
@@ -18,37 +18,65 @@ const RECOGNITION = [
   { big: "★", text: "premiações, presentes e convites para eventos do Google" },
 ];
 
+const PILLARS = [
+  "Tráfego pago com método validado no nosso próprio delivery",
+  "Cardápio personalizado que aumenta o ticket médio",
+  "Atendimento com IA: todo cliente respondido na hora",
+  "Os dados dos clientes ficam com você, não com o app",
+];
+
+const PAINS = [
+  { title: "Poucos pedidos na semana", question: "Seu delivery vende bem no fim de semana, mas de segunda a quinta fica parado?" },
+  { title: "Faturamento imprevisível", question: "Você nunca sabe quantos pedidos vai receber amanhã e fica dependendo da sorte?" },
+  { title: "Dependência do iFood", question: "Você vende, mas uma parte do seu lucro fica nas taxas dos aplicativos?" },
+  { title: "Concorrente vendendo mais", question: "Tem concorrente com produto inferior ao seu, mas que recebe muito mais pedidos?" },
+  { title: "Cliente que não volta", question: "Você conquista um cliente, ele compra uma vez e depois desaparece?" },
+  { title: "Delivery desconhecido", question: "Seu restaurante é bom, mas as pessoas do seu próprio bairro nem sabem que ele existe?" },
+  { title: "Pouco lucro", question: "Você trabalha o mês inteiro, vende bastante e quase não vê dinheiro sobrando?" },
+  { title: "Cozinha parada", question: "Sua cozinha fica parada em alguns horários, mesmo com a equipe disponível?" },
+  { title: "Promoção que não funciona", question: "Você dá desconto, sacrifica a margem e mesmo assim os pedidos não aumentam?" },
+  { title: "Instagram que não vende", question: "Você posta fotos e vídeos dos seus pratos, mas isso quase nunca vira pedido?" },
+];
+
 const METHOD = [
-  { title: "Intenção", text: "Mapeamos quem procura o que você vende, onde quer que esteja, e o que faz essa pessoa comprar." },
-  { title: "Anúncio", text: "Google Ads e Meta Ads com a mensagem certa para atrair comprador, não curioso." },
-  { title: "Página", text: "Uma landing page rápida que explica a oferta e filtra quem não tem perfil." },
-  { title: "WhatsApp", text: "A conversa começa com contexto, roteiro de venda e resposta rápida." },
-  { title: "Venda", text: "Follow-up e acompanhamento até o fechamento, com cada venda ligada à campanha de origem." },
-  { title: "Margem", text: "Cortamos o que não dá lucro e escalamos o que deixa dinheiro na sua mão." },
+  { title: "Tráfego pago validado", text: "Anúncios no Google e no Meta com o mesmo método que usamos no nosso próprio delivery. Testado com o nosso dinheiro antes de usar o seu." },
+  { title: "Cardápio que vende mais", text: "Cardápio personalizado que oferece adicionais, bebidas e sobremesas ao longo do pedido. O ticket médio sobe sem gastar mais com anúncio." },
+  { title: "Atendimento com IA", text: "A inteligência artificial responde todo cliente na hora, a qualquer horário. Ninguém espera e nenhum pedido se perde." },
+  { title: "Os dados são seus", text: "Nome, telefone e histórico de cada cliente ficam com você, e não com o aplicativo." },
+  { title: "Cliente que volta sempre", text: "Com esses dados, você chama o cliente de volta com a oferta certa, principalmente nos dias fracos." },
+  { title: "Dinheiro no bolso", text: "Sem comissão de aplicativo em cada pedido, a margem fica com você no fim do mês." },
+];
+
+const COMPARE = [
+  { label: "Taxa por pedido", app: "Comissão do aplicativo em cada venda", us: "Pedido no seu canal, sem comissão" },
+  { label: "Dados do cliente", app: "Ficam com o aplicativo", us: "Ficam com você" },
+  { label: "Chamar o cliente de volta", app: "Você não tem o contato dele", us: "WhatsApp e ofertas quando você quiser" },
+  { label: "Concorrência", app: "Seu prato ao lado de dezenas de concorrentes", us: "O cliente vê só o seu cardápio" },
+  { label: "Ticket médio", app: "Cardápio padrão do aplicativo", us: "Cardápio que oferece adicionais no pedido" },
 ];
 
 const PLANS = [
   {
-    phase: "Quero começar a vender",
-    name: "Captação",
-    text: "Para quem precisa de um canal de clientes que não dependa de indicação.",
-    items: ["Google Ads e Meta Ads para quem quer comprar", "Google Maps e Perfil da Empresa", "Landing page de alta conversão", "Relatório de custo por cliente"],
+    phase: "Quero mais pedidos durante a semana",
+    name: "Pedidos",
+    text: "Para quem vende bem no fim de semana, mas quer a cozinha cheia de segunda a quinta.",
+    items: ["Tráfego pago com método validado", "Google Maps e Perfil da Empresa", "Cardápio personalizado", "Relatório de custo por pedido"],
   },
   {
-    phase: "Quero vender com previsibilidade",
-    name: "Captação + Conversão",
-    text: "Para quem já recebe contatos, mas vende menos do que poderia.",
-    items: ["Tudo do plano Captação", "Roteiro de vendas e follow-up no WhatsApp", "Copy e criativos testados toda semana", "Painel com custo por cliente e margem"],
+    phase: "Quero parar de depender do iFood",
+    name: "Delivery Próprio",
+    text: "Para quem vende, mas vê parte do lucro ficar nas taxas dos aplicativos.",
+    items: ["Tudo do plano Pedidos", "Atendimento com IA no WhatsApp", "Base de clientes com os seus dados", "Campanhas de recompra"],
   },
   {
     phase: "Quero escalar com margem",
     name: "Escala",
-    text: "Para quem já vende e quer crescer sem perder lucro no caminho.",
-    items: ["Tudo do plano Captação + Conversão", "Plano de crescimento de 12 meses", "Integração com CRM", "Estrategista dedicado à sua conta"],
+    text: "Para quem já vende bem e quer crescer sem perder lucro no caminho.",
+    items: ["Tudo do plano Delivery Próprio", "Ofertas para horários de pouco movimento", "Criativos novos toda semana", "Estrategista dedicado ao seu delivery"],
   },
 ];
 
-const ROLES = ["Gestor de tráfego", "Copywriter", "Designer", "Analista de dados", "Estrategista", "Especialista em WhatsApp"];
+const ROLES = ["Gestor de tráfego", "Especialista em cardápio", "Designer", "Especialista em IA", "Analista de dados", "Estrategista de delivery"];
 
 function Logo({ className }: { className?: string }) {
   return (
@@ -90,21 +118,21 @@ function JsonLd() {
         "@type": "ProfessionalService",
         "@id": id("empresa"),
         name: site.name,
-        slogan: "Captação e conversão para o seu negócio local vender e lucrar mais",
+        slogan: "Marketing para delivery: mais pedidos, menos custo e mais dinheiro no bolso",
         url: site.url,
         logo: `${site.url}/favicon.svg`,
         image: `${site.url}/og.png`,
-        description: "Agência de marketing e assessoria para negócios locais que querem leads qualificados e vendas rápidas no WhatsApp. Tráfego pago no Google Ads e Meta Ads, Google Maps, landing pages e vendas no WhatsApp.",
+        description: "Agência de marketing especializada em delivery: tráfego pago com método validado, cardápio personalizado que aumenta o ticket médio, atendimento com inteligência artificial e base de clientes própria, sem depender das taxas dos aplicativos.",
         telephone: `+${site.whatsapp}`,
         email: site.email,
         priceRange: "$$",
         address: { "@type": "PostalAddress", addressLocality: site.city, addressRegion: site.region, addressCountry: "BR" },
         areaServed: { "@type": "Country", name: site.areaServed },
-        knowsAbout: ["Marketing para negócios locais", "Marketing para restaurantes", "Marketing jurídico", "Marketing médico", "Marketing para clínicas de estética", "Tráfego pago", "Google Ads", "Meta Ads", "Google Perfil da Empresa", "Vendas pelo WhatsApp"],
+        knowsAbout: ["Marketing para delivery", "Delivery próprio", "Marketing para restaurantes", "Marketing para hamburgueria", "Marketing para pizzaria", "Cardápio digital", "Atendimento com inteligência artificial", "Tráfego pago", "Google Ads", "Meta Ads", "Vendas pelo WhatsApp"],
         sameAs: [site.instagram],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Serviços de marketing digital",
+          name: "Marketing para delivery",
           itemListElement: serviceTabs.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.tab, description: s.text, provider: { "@id": id("empresa") } } })),
         },
       },
@@ -116,8 +144,8 @@ function JsonLd() {
 }
 
 const HEADLINE: [string, boolean][] = [
-  ["É", false], ["simples:", false], ["captação", false], ["e", false], ["conversão", false], ["para", false], ["o", false], ["seu", false], ["negócio", false],
-  ["vender", true], ["e", true], ["lucrar", true], ["mais", true],
+  ["O", false], ["método", false], ["é", false], ["simples:", false], ["seu", false], ["delivery", false], ["fatura", false], ["mais,", false], ["com", false], ["menos", false], ["custo", false], ["e", false],
+  ["mais", true], ["dinheiro", true], ["no", true], ["bolso", true], ["no", true], ["fim", true], ["do", true], ["mês", true],
 ];
 
 export default function Home() {
@@ -132,8 +160,8 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] items-center gap-10 px-4 pb-32 pt-10 sm:px-8 sm:pb-40 lg:grid-cols-[1.08fr_1fr] lg:gap-16 lg:pt-20">
             <div>
               <Logo className="h-7 w-auto sm:h-9" />
-              <p className="m-0 mt-6 text-sm font-bold">Agência de marketing para negócios locais</p>
-              <h1 id="titulo" className="mt-3 text-[2rem] font-normal uppercase leading-[1.14] min-[390px]:text-[2.25rem] sm:text-[2.85rem]">
+              <p className="m-0 mt-6 text-sm font-bold">Marketing especializado em delivery</p>
+              <h1 id="titulo" className="mt-3 text-[1.75rem] font-normal uppercase leading-[1.14] min-[390px]:text-[1.95rem] sm:text-[2.6rem]">
                 {HEADLINE.map(([w, strong], i) => (
                   <span key={i}>
                     <span className={`word ${strong ? "font-black" : ""}`} style={{ animationDelay: `${i * 45}ms` }}>{w}</span>{" "}
@@ -143,11 +171,11 @@ export default function Home() {
               <div className="mt-7">
                 <HeroVideo src="/video/rezeta.mp4" poster="/video/rezeta-poster.jpg" />
               </div>
-              <p className="m-0 mt-5 max-w-xl text-lg font-medium leading-snug">
-                Leads qualificados no seu WhatsApp, de forma rápida, para o seu negócio vender agora. Chega de contato caro e desqualificado. <b className="font-extrabold">O nosso resultado é você vender mais.</b>
+              <p className="m-0 mt-6 max-w-xl text-lg font-medium leading-snug">
+                Não queremos impressionar você com marketing bonito. <b className="font-extrabold">Queremos pedidos chegando no seu delivery todos os dias.</b>
               </p>
-              <ul className="m-0 mt-5 grid list-none gap-2 p-0 font-bold">
-                {["Clientes qualificados, prontos para comprar", "Chega de faturamento sem margem"].map((t) => (
+              <ul className="m-0 mt-5 grid list-none gap-2.5 p-0 font-bold">
+                {PILLARS.map((t) => (
                   <li key={t} className="flex items-start gap-2.5">
                     <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded bg-black text-yellow">
                       <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m3 8.5 3 3 7-7" /></svg>
@@ -157,7 +185,7 @@ export default function Home() {
                 ))}
               </ul>
               <div className="mt-7">
-                <WhatsappLink placement="hero" variant="black" size="lg" icon={false}>Quero vender mais</WhatsappLink>
+                <WhatsappLink placement="hero" variant="black" size="lg" icon={false}>Quero mais pedidos</WhatsappLink>
               </div>
             </div>
             <HeroForm />
@@ -170,16 +198,16 @@ export default function Home() {
           <Ribbon reverse className="top-8 -rotate-[2deg] bg-white text-black shadow-xl sm:top-12" />
         </div>
 
-        {/* PARA QUEM É */}
-        <section id="para-quem" aria-labelledby="nichos" className="mx-auto max-w-6xl px-4 pb-20 pt-6 sm:px-8 sm:pb-28">
-          <div data-reveal="zoom" className="mx-auto max-w-4xl rounded-2xl border-2 border-yellow/60 bg-panel px-6 py-12 text-center sm:px-14 sm:py-16">
-            <Eyebrow>Para quem é</Eyebrow>
-            <h2 id="nichos" className={h2}>
-              Para <b className="hl">negócios locais</b> que precisam de <b className="hl">cliente qualificado no WhatsApp</b>, com urgência
+        {/* DORES */}
+        <section id="para-quem" aria-labelledby="dores" className="mx-auto max-w-6xl px-4 pb-20 pt-6 sm:px-8 sm:pb-28">
+          <div data-reveal className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Para donos de delivery</Eyebrow>
+            <h2 id="dores" className={h2}>
+              Alguma dessas frases <b className="hl">parece com o seu delivery?</b>
             </h2>
-            <div className="mt-9 flex justify-center">
-              <WhatsappLink placement="para_quem" size="lg" icon={false}>Esse é o meu caso</WhatsappLink>
-            </div>
+          </div>
+          <div data-reveal className="mt-10">
+            <PainPicker pains={PAINS} />
           </div>
         </section>
 
@@ -195,7 +223,7 @@ export default function Home() {
                 Quando o Google selecionou <b className="font-bold text-black">apenas 20 gestores de tráfego</b> para uma visita à sua sede, a REZETA estava entre eles. Fomos recebidos por gerentes do Google, ganhamos premiações e presentes, e seguimos sendo convidados para eventos.
               </p>
               <p className="m-0 mt-4 text-[17px] leading-relaxed text-black/75">
-                Esse reconhecimento vira vantagem para você: os nossos clientes contam com um <b className="font-bold text-black">gerente de contas do Google</b> acompanhando as campanhas. Colocamos isso a serviço de negócios locais que querem vender mais pelo WhatsApp.
+                Esse reconhecimento vira vantagem para você: os nossos clientes contam com um <b className="font-bold text-black">gerente de contas do Google</b> acompanhando as campanhas. E não é só teoria: o método que aplicamos no seu delivery é validado todos os dias no <b className="font-bold text-black">nosso próprio delivery</b>.
               </p>
               <ul className="m-0 mt-8 grid list-none gap-3 p-0">
                 {RECOGNITION.map((r, i) => (
@@ -216,7 +244,7 @@ export default function Home() {
         <section id="depoimentos" aria-labelledby="dep" className="mx-auto max-w-6xl px-4 py-20 sm:px-8 sm:py-28">
           <div data-reveal className="text-center">
             <Eyebrow>Depoimentos</Eyebrow>
-            <h2 id="dep" className={h2}>Negócios locais que pararam de pagar caro por contato <b className="hl">contam como foi</b></h2>
+            <h2 id="dep" className={h2}>Quem parou de depender da sorte <b className="hl">conta como foi</b></h2>
           </div>
           <div data-reveal className="mt-10">
             <Testimonials items={testimonials} />
@@ -226,12 +254,43 @@ export default function Home() {
         {/* MÉTODO */}
         <section id="metodo" aria-labelledby="met" className="mx-auto max-w-5xl px-4 py-20 sm:px-8 sm:py-28">
           <div data-reveal className="text-center">
-            <Eyebrow>O método REZETA</Eyebrow>
-            <h2 id="met" className={h2}>Da busca no Google até o <b className="hl">lucro no caixa</b>, nada fica solto</h2>
-            <p className="m-0 mt-4 text-white/65">Role a página e acompanhe o caminho de cada cliente.</p>
+            <Eyebrow>O método é simples</Eyebrow>
+            <h2 id="met" className={h2}>Faturar mais, com menos custo e <b className="hl">mais dinheiro no bolso</b> no fim do mês</h2>
+            <p className="m-0 mt-4 text-white/65">Role a página e veja o caminho de cada pedido.</p>
           </div>
           <div className="mt-12">
             <MethodPath steps={METHOD} />
+          </div>
+        </section>
+
+        {/* IFOOD x CANAL PRÓPRIO */}
+        <section id="ifood" aria-labelledby="comp" className="mx-auto max-w-5xl px-4 pb-20 sm:px-8 sm:pb-28">
+          <div data-reveal className="text-center">
+            <Eyebrow>Depender do aplicativo custa caro</Eyebrow>
+            <h2 id="comp" className={h2}>No iFood o cliente é do aplicativo. <b className="hl">Com a REZETA, ele é seu</b></h2>
+            <p className="mx-auto m-0 mt-4 max-w-2xl text-white/65">Você não precisa sair do iFood. Precisa parar de depender dele.</p>
+          </div>
+          <div data-reveal className="mt-10 overflow-hidden rounded-2xl border border-white/12">
+            <div className="hidden grid-cols-[1fr_1.2fr_1.2fr] bg-panel text-sm font-extrabold uppercase tracking-wider sm:grid">
+              <span className="p-4" />
+              <span className="p-4 text-white/60">Só no aplicativo</span>
+              <span className="bg-yellow p-4 text-black">Delivery próprio com a REZETA</span>
+            </div>
+            <ul className="m-0 list-none p-0">
+              {COMPARE.map((c) => (
+                <li key={c.label} className="grid border-t border-white/10 first:border-t-0 sm:grid-cols-[1fr_1.2fr_1.2fr] sm:first:border-t">
+                  <span className="bg-panel px-4 pb-1 pt-4 text-sm font-extrabold uppercase tracking-wider text-yellow sm:bg-transparent sm:p-4 sm:text-[15px] sm:normal-case sm:tracking-normal sm:text-white">{c.label}</span>
+                  <span className="flex items-start gap-2.5 bg-panel px-4 py-2 text-white/60 sm:bg-transparent sm:p-4">
+                    <span aria-hidden="true" className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-black">✕</span>
+                    <span><span className="sr-only">Só no aplicativo: </span>{c.app}</span>
+                  </span>
+                  <span className="flex items-start gap-2.5 bg-yellow px-4 pb-4 pt-2 font-bold text-black sm:p-4">
+                    <span aria-hidden="true" className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-black text-xs font-black text-yellow">✓</span>
+                    <span><span className="sr-only">Com a REZETA: </span>{c.us}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -239,7 +298,7 @@ export default function Home() {
         <section id="servicos" aria-labelledby="fazemos" className="mx-auto max-w-5xl px-4 pb-20 sm:px-8 sm:pb-28">
           <div data-reveal className="text-center">
             <Eyebrow>O que fazemos</Eyebrow>
-            <h2 id="fazemos" className={h2}>Cinco frentes trabalhando juntas para <b className="hl">cada real voltar como venda</b></h2>
+            <h2 id="fazemos" className={h2}>Cinco frentes para o seu delivery <b className="hl">vender mais e pagar menos taxa</b></h2>
           </div>
           <div data-reveal className="mt-10">
             <Carousel count={serviceTabs.length} label="Serviços da REZETA">
@@ -267,7 +326,7 @@ export default function Home() {
         <section id="planos" aria-labelledby="pla" className="mx-auto max-w-5xl px-4 pb-20 sm:px-8 sm:pb-28">
           <div data-reveal>
             <Eyebrow>Planos sob medida</Eyebrow>
-            <h2 id="pla" className={h2}>Cada fase da empresa <b className="hl">pede um plano diferente</b></h2>
+            <h2 id="pla" className={h2}>Cada fase do seu delivery <b className="hl">pede um plano diferente</b></h2>
             <p className="m-0 mt-4 max-w-2xl text-white/65">Toque na frase que mais parece com o seu momento.</p>
           </div>
           <div data-reveal className="mt-10">
@@ -279,10 +338,10 @@ export default function Home() {
         <section aria-labelledby="time" className="border-y border-white/10 bg-panel py-20 sm:py-28">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-8 lg:grid-cols-2">
             <div data-reveal="left">
-              <Eyebrow>Seu time de marketing</Eyebrow>
+              <Eyebrow>Seu time de marketing para delivery</Eyebrow>
               <h2 id="time" className={h2}>Um <b className="hl">time completo</b> sem contratar ninguém</h2>
               <p className="m-0 mt-5 text-[17px] leading-relaxed text-white/70">
-                Contratar, treinar e gerenciar especialistas custa caro e toma o seu tempo. Com a assessoria de marketing da REZETA, você tem as pessoas certas trabalhando na sua captação e na sua conversão, e continua focado em atender e entregar.
+                Contratar, treinar e gerenciar especialistas custa caro e toma o seu tempo. Com a REZETA, você tem as pessoas certas trabalhando nos seus pedidos, e continua focado no que faz de melhor: a cozinha.
               </p>
               <div className="mt-8">
                 <WhatsappLink placement="time" size="lg" icon={false}>Quero esse time</WhatsappLink>
@@ -300,7 +359,7 @@ export default function Home() {
         <section id="faq" aria-labelledby="per" className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1fr_1.6fr]">
           <div data-reveal="left" className="lg:sticky lg:top-10">
             <h2 id="per" className="text-[1.9rem] font-extrabold uppercase leading-tight text-white sm:text-4xl">Perguntas frequentes</h2>
-            <p className="m-0 mt-3 text-white/60">Tudo sobre a nossa agência de marketing para negócios locais, antes de você chamar no WhatsApp.</p>
+            <p className="m-0 mt-3 text-white/60">Tudo sobre o marketing para delivery da REZETA, antes de você chamar no WhatsApp.</p>
           </div>
           <Faq items={faq} />
         </section>
@@ -308,10 +367,10 @@ export default function Home() {
         {/* CHAMADA FINAL */}
         <section aria-labelledby="fim" className="px-4 pb-20 sm:px-8 sm:pb-28">
           <div data-reveal="zoom" className="hero-bg mx-auto max-w-6xl animate-bg-slide rounded-2xl px-6 py-14 text-center text-black sm:py-20">
-            <h2 id="fim" className="mx-auto max-w-3xl text-balance text-[1.9rem] font-black uppercase leading-[1.1] sm:text-5xl">Chega de faturamento sem margem</h2>
-            <p className="mx-auto mb-0 mt-4 max-w-xl text-lg font-medium">É simples: captação e conversão para o seu negócio local vender e lucrar mais.</p>
+            <h2 id="fim" className="mx-auto max-w-3xl text-balance text-[1.9rem] font-black uppercase leading-[1.1] sm:text-5xl">Chega de depender do iFood e da sorte</h2>
+            <p className="mx-auto mb-0 mt-4 max-w-xl text-lg font-medium">O método é simples: mais pedidos, menos custo e mais dinheiro no bolso no fim do mês.</p>
             <div className="mt-8 flex justify-center">
-              <WhatsappLink placement="cta_final" variant="black" size="lg" icon={false}>Quero vender mais</WhatsappLink>
+              <WhatsappLink placement="cta_final" variant="black" size="lg" icon={false}>Quero mais pedidos</WhatsappLink>
             </div>
           </div>
         </section>

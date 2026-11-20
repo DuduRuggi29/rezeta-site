@@ -4,7 +4,7 @@
  */
 export const site = {
   name: "REZETA",
-  tagline: "Captação e Conversão",
+  tagline: "Marketing para Delivery",
   legalName: "REZETA Captação e Conversão", // TODO: razão social, se quiser exibir
   url: "https://www.rezeta.com.br", // TODO: domínio final (sem barra no fim)
   locale: "pt_BR",
@@ -13,7 +13,7 @@ export const site = {
   whatsapp: "5521988175519",
   whatsappDisplay: "(21) 98817-5519",
   whatsappMessage:
-    "Olá, equipe REZETA! Vim pelo site. Tenho um negócio local e quero vender mais.",
+    "Olá, equipe REZETA! Vim pelo site. Tenho um delivery e quero mais pedidos.",
 
   email: "contato@rezeta.com.br", // TODO
   city: "São Paulo", // TODO: cidade-sede (ajuda no SEO local)

@@ -6,16 +6,16 @@ import "./globals.css";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], display: "swap", variable: "--font-montserrat" });
 
-const title = "Agência de Marketing para Negócios Locais | REZETA";
+const title = "Marketing para Delivery: Mais Pedidos e Menos Taxa | REZETA";
 const description =
-  "Agência de marketing para negócios locais que precisam vender agora: leads qualificados direto no seu WhatsApp, com tráfego pago no Google e no Meta. Fale com a REZETA.";
+  "Agência de marketing especializada em delivery: tráfego pago com método validado, cardápio que aumenta o ticket médio e atendimento com IA. Mais pedidos, menos taxa de aplicativo e os dados dos clientes com você.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title,
   description,
   applicationName: site.name,
-  keywords: ["agência de marketing para negócios locais", "marketing para restaurantes", "marketing jurídico", "marketing para advogados", "marketing médico", "marketing para clínicas", "marketing para clínica de estética", "gestão de tráfego pago", "google ads", "google meu negócio", "agência de marketing digital"],
+  keywords: ["marketing para delivery", "agência de marketing para delivery", "tráfego pago para delivery", "como aumentar pedidos no delivery", "delivery próprio", "cardápio digital", "atendimento com inteligência artificial whatsapp", "marketing para restaurantes", "marketing para hamburgueria", "marketing para pizzaria", "alternativa ao ifood"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: `${site.name} — ${site.tagline}`,
     title,
     description,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "REZETA — Agência de Tráfego Pago: Captação e Conversão" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "REZETA — Marketing para Delivery" }],
   },
   twitter: { card: "summary_large_image", title, description, images: ["/og.png"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
