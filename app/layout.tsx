@@ -8,7 +8,7 @@ const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600"
 
 const title = "Marketing para Delivery: Mais Pedidos e Menos Taxa | REZETA";
 const description =
-  "Agência de marketing especializada em delivery: tráfego pago com método validado, cardápio que aumenta o ticket médio e atendimento com IA. Mais pedidos, menos taxa de aplicativo e os dados dos clientes com você.";
+  "Agência de marketing especializada em delivery: tráfego pago com método validado, cardápio que aumenta o ticket médio e atendimento com IA. Mais pedidos, menos taxa de aplicativo e os seus clientes sem iFood no meio, para vender para eles sempre que quiser.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

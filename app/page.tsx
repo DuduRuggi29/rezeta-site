@@ -1,10 +1,11 @@
+import { AiChatDemo } from "@/components/rezeta/ai-chat";
 import { WhatsappLink } from "@/components/whatsapp-link";
 import { Carousel, Faq, HeroForm, HeroVideo, MethodPath, PageEffects, PainPicker, PhotoStack, PlanPicker, StickyCta, Testimonials } from "@/components/rezeta/client";
 import { faq, serviceTabs, testimonials } from "@/lib/content";
 import { LOGO_PATH, LOGO_VIEWBOX } from "@/lib/logo-path";
 import { site } from "@/lib/site";
 
-const RIBBON = ["Mais pedidos de segunda a domingo", "Menos taxa de aplicativo", "Ticket médio maior", "Atendimento com IA", "Os dados dos clientes são seus", "Mais dinheiro no bolso no fim do mês"];
+const RIBBON = ["Mais pedidos de segunda a domingo", "Menos taxa de aplicativo", "Ticket médio maior", "Atendimento com IA", "Seus clientes sem iFood no meio", "Venda para o seu cliente sempre que quiser", "Mais dinheiro no bolso no fim do mês"];
 
 const PHOTOS = [
   { src: "/sobre/equipe-google.jpg", width: 778, height: 926, caption: "Nossa equipe na sede do Google", alt: "Equipe da REZETA com crachás de convidados na sede do Google" },
@@ -18,11 +19,13 @@ const RECOGNITION = [
   { big: "★", text: "premiações, presentes e convites para eventos do Google" },
 ];
 
-const PILLARS = [
+const PILLARS: React.ReactNode[] = [
   "Tráfego pago com método validado no nosso próprio delivery",
   "Cardápio personalizado que aumenta o ticket médio",
   "Atendimento com IA: todo cliente respondido na hora",
-  "Os dados dos clientes ficam com você, não com o app",
+  <>
+    Os dados dos clientes ficam com você, <mark className="rounded bg-black px-1.5 text-yellow [box-decoration-break:clone]">sem aplicativo como o iFood no meio</mark>. A vantagem: você vende para esse cliente <u className="decoration-2 underline-offset-2">sempre que quiser</u>
+  </>,
 ];
 
 const PAINS = [
@@ -42,15 +45,15 @@ const METHOD = [
   { title: "Tráfego pago validado", text: "Anúncios no Google e no Meta com o mesmo método que usamos no nosso próprio delivery. Testado com o nosso dinheiro antes de usar o seu." },
   { title: "Cardápio que vende mais", text: "Cardápio personalizado que oferece adicionais, bebidas e sobremesas ao longo do pedido. O ticket médio sobe sem gastar mais com anúncio." },
   { title: "Atendimento com IA", text: "A inteligência artificial responde todo cliente na hora, a qualquer horário. Ninguém espera e nenhum pedido se perde." },
-  { title: "Os dados são seus", text: "Nome, telefone e histórico de cada cliente ficam com você, e não com o aplicativo." },
-  { title: "Cliente que volta sempre", text: "Com esses dados, você chama o cliente de volta com a oferta certa, principalmente nos dias fracos." },
+  { title: "Seus clientes, sem iFood no meio", text: "Nome, telefone e histórico de cada cliente ficam com você, sem aplicativo como o iFood no meio. A vantagem: você vende para esse cliente sempre que quiser." },
+  { title: "Cliente que compra sempre", text: "É só mandar uma oferta no WhatsApp para ele pedir de novo, principalmente nos dias fracos. No iFood, você não consegue fazer isso." },
   { title: "Dinheiro no bolso", text: "Sem comissão de aplicativo em cada pedido, a margem fica com você no fim do mês." },
 ];
 
 const COMPARE = [
   { label: "Taxa por pedido", app: "Comissão do aplicativo em cada venda", us: "Pedido no seu canal, sem comissão" },
-  { label: "Dados do cliente", app: "Ficam com o aplicativo", us: "Ficam com você" },
-  { label: "Chamar o cliente de volta", app: "Você não tem o contato dele", us: "WhatsApp e ofertas quando você quiser" },
+  { label: "Dados do cliente", app: "Ficam com o iFood", us: "Ficam com você, sem iFood no meio" },
+  { label: "Vender de novo para o cliente", app: "Você não tem o contato dele", us: "Você vende para ele sempre que quiser" },
   { label: "Concorrência", app: "Seu prato ao lado de dezenas de concorrentes", us: "O cliente vê só o seu cardápio" },
   { label: "Ticket médio", app: "Cardápio padrão do aplicativo", us: "Cardápio que oferece adicionais no pedido" },
 ];
@@ -175,12 +178,12 @@ export default function Home() {
                 Não queremos impressionar você com marketing bonito. <b className="font-extrabold">Queremos pedidos chegando no seu delivery todos os dias.</b>
               </p>
               <ul className="m-0 mt-5 grid list-none gap-2.5 p-0 font-bold">
-                {PILLARS.map((t) => (
-                  <li key={t} className="flex items-start gap-2.5">
+                {PILLARS.map((t, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
                     <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded bg-black text-yellow">
                       <svg viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m3 8.5 3 3 7-7" /></svg>
                     </span>
-                    {t}
+                    <span className="min-w-0">{t}</span>
                   </li>
                 ))}
               </ul>
@@ -260,6 +263,22 @@ export default function Home() {
           </div>
           <div className="mt-12">
             <MethodPath steps={METHOD} />
+          </div>
+        </section>
+
+        {/* DEMONSTRAÇÃO: IA NO WHATSAPP */}
+        <section id="ia" aria-labelledby="ia-titulo" className="border-y border-white/10 bg-[radial-gradient(ellipse_at_top,rgb(255_209_5/.10),transparent_60%)] py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-8">
+            <div data-reveal className="mx-auto max-w-3xl text-center">
+              <Eyebrow>Teste agora</Eyebrow>
+              <h2 id="ia-titulo" className={h2}>
+                Converse com a <b className="hl">IA que atende o seu delivery</b>
+              </h2>
+              <p className="m-0 mt-4 text-white/65">Faça um pedido como se fosse o seu cliente e veja como ele é atendido na hora.</p>
+            </div>
+            <div data-reveal className="mt-12">
+              <AiChatDemo />
+            </div>
           </div>
         </section>
 
